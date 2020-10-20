@@ -4,72 +4,125 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <meta charset="utf-8" />
+    <title>Самостоятельная работа по системам счисления</title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 60px;
+        }
+    </style>
 </head>
 <body>
-    <form id="form1" runat="server">
     <div id="main">
     <div id="work">
     
-    <p style="border:2px dotted red;">Вы можете использовать этот тест для тренировки умения переводить в различные системы счисления. Когда ответите на все вопросы <b>позовите учителя. </b><br> <span style="color:red;">ВНИМАНИЕ!!!</span> <br>Если нажать "Проверить" без присутствия учителя баллы не будут засчитаны<br>
-    </p>
+    <p style="border:2px dotted red;">Вы можете использовать этот тест для тренировки умения переводить в различные системы счисления.<br /> 
+        Тест можно выполнять несколько раз (если это не контрольная работа). После ввода ответов нажмите кнопку "Проверить". Чтобы получить оценку за работу,<br />
+        выполните работу на сайте и в тетради. 
+        В тетради нужно продемонстрировать умение решать задачи, а не просто показать ответы.</p>
         <h1>Самостоятельная работа по системам счисления</h1>
-    <p>Введите свою имя и фамилию<br> (если тренируетесь, то вводить не обязательно):<br>    <hr>
-    <input type="text" value="" id="textFIO" style="width: 500px;">
-    
-	<p>1. Переведите из 10 системы счисления в 2 систему счисления число:<b><span id="task1"></span></b></p>
-    <input type="text" value="" id="text1"><br>
+    <p>Введите свою имя и фамилию<br> (если тренируетесь, то вводить не обязательно):<br/>    
+    <input type="text" value="" id="textFIO" style="width: 500px;"/>
+        <select id="Select1" class="auto-style1" name="D1">
+            <option>8А</option>
+            <option>8Б</option>
+            <option>9А</option>
+            <option>9Б</option>
+            <option>10А</option>
+            <option>10Б</option>
+            <option>10В</option>
+            <option>11А</option>
+            <option>11Б</option>
+            <option>11В</option>
+        </select><p>1. Переведите из 10 системы счисления в 2 систему счисления число:<b><span id="task1"></span></b></p>
+    <input type="text" value="" id="text1"/><br/>
     <p>2. Переведите из 10 системы счисления в 8 систему счисления число:<b><span id="task2"></span></b></p>
-    <input type="text" value="" id="text2"><br>
+    <input type="text" value="" id="text2"/><br/>
     <p>3. Переведите из 10 системы счисления в 16 систему счисления число:<b><span id="task3"></span></b></p>
-    <input type="text" value="" id="text3"><br>
+    <input type="text" value="" id="text3"/><br/>
     <p>4. Переведите из 2 системы счисления в 10 систему счисления число:<b><span id="task4"></span></b></p>
-    <input type="text" value="" id="text4"><br>
+    <input type="text" value="" id="text4"/><br/>
     <p>5. Переведите из 8 системы счисления в 10 систему счисления число:<b><span id="task5"></span></b></p>
-    <input type="text" value="" id="text5"><br>
+    <input type="text" value="" id="text5"/><br/>
     <p>6. Переведите из 16 системы счисления в 10 систему счисления число:<b><span id="task6"></span></b></p>
-    <input type="text" value="" id="text6"><br>
+    <input type="text" value="" id="text6"/><br/>
         <p>7. Переведите из 10 системы счисления в 7 систему счисления число:<b><span id="task7"></span></b></p>
-    <input type="text" value="" id="text7"><br>
+    <input type="text" value="" id="text7"/><br/>
     <p>8. Переведите из 5 системы счисления в 10 систему счисления число:<b><span id="task8"></span></b></p>
-    <input type="text" value="" id="text8"><br>
-    <button onclick="checkIt()">Проверить</button>
+    <input type="text" value="" id="text8"/><br/>
+    <p>9. Перевести из байтов в Килобайты:<span id="task9"></span></p>
+    <input type="text" value="" id="text9"/><br/>
+    <p>10. Перевести из Кбайтов в байты:<span id="task10"></span></p>
+    <input type="text" value="" id="text10"/><br/>
+    <p>11. Перевести из римской системы счисления в десятичную систему счисления:<span id="task11"></span></p>
+    <input type="text" value="" id="text11"/><br/>
+    <p>12. Перевести из десятичной системы счисления в римскую систему счисления:<span id="task12"></span></p>
+    <input type="text" value="" id="text12"/><br/>
+             Окончание самостоятельной работы
+      <hr />
+    <button onclick="checkIt()">ПРОВЕРИТЬ</button>
+
     </div>
     <p id="checkText">
-       
+
+
     </p>
     </div>
+
 <script>
     
 window.onload=testFill;
 
-var q=[],ta=[],n=8;//count tasks
-    
+var q=[],ta=[],n=12,results;//count tasks
+
 function checkIt()
 {
-    var a=[],tf=[],ball=0;
-    for(var i=0;i<n;i++)
-        q[i]=document.getElementById("task"+(i+1)).value;    
+    results=""
+    var a = [], tf = [], ball = 0;
+
+    //for(var i=0;i<n;i++)
+      //  q[i]=document.getElementById("task"+(i+1)).value;    
     for(var i=0;i<n;i++)
         a[i]=document.getElementById("text"+(i+1)).value;    
-    
-    for(var i=0;i<n;i++)
-    
-        if (a[i]==ta[i]) {tf[i]=1;ball++;} else tf[i]=0; 
-    var checkText=document.getElementById("checkText");
-    checkText.innerHTML="<br>Работу выполнил:"+document.getElementById("textFIO").value+"<br>";
-    checkText.innerHTML+="Результаты:<br>"
-    
-    for(var i=0;i<n;i++)
-          checkText.innerHTML+=(i+1)+". Дан ответ: "+a[i]/*+". Правильный ответ:"+ta[i]*/+". Баллов:"+tf[i]+"<br>";
-    checkText.innerHTML+="Всего баллов:"+ball;
-   document.getElementById("work").innerHTML="";
-     
+    //alert(a)
+    for (var i = 0; i < n; i++)
+        if (a[i]!=undefined && a[i].toString().toUpperCase() == ta[i].toString().toUpperCase()) { tf[i] = 1; ball++; } else {
+            tf[i] = 0;
+        };
+
+    var checkText = document.getElementById("checkText");
+   // var r = document.getElementById("result");
+    checkText.innerHTML = "<br>Name:" + document.getElementById("textFIO").value + "<br>";
+    results += document.getElementById("textFIO").value + "<br>"
+    results+=document.getElementById("Select1").value+"<br>"
+    checkText.innerHTML += "Results:<br>"
+   // r.value += "<br>Работу выполнил:" + document.getElementById("textFIO").value + "<br>";
+    for (var i = 0; i < n; i++)
+    {
+        checkText.innerHTML += (i + 1) +". Question:"+q[i]+ ". Your answer: " + a[i]+". Correct answer:"+ta[i] + ". Balls:" + tf[i] + "<br>";
+
+        results = results  + tf[i] + "<br>";
+    }
+    //alert(results);
+    checkText.innerHTML += "Total:" +  ball;
+    results += ball + "<br>";//+ document.getElementById("work").innerHTML;
+    //alert(results);
+    document.cookie = "results_zaa=" + results;//checkText.innerHTML;
+    document.cookie = "FIO_zaa=" + document.getElementById("textFIO").value;
+    document.getElementById("work").innerHTML = "";
+    document.getElementById("ServerDiv").style.visibility = "visible";
+    //document.getElementById("btnSend").style.visibility = "visible";
+    //document.getElementsByName("btnSend").style.visibility = "visible";
+    //document.getElementById("NameOf").value = textFIO.value;
+    //document.getElementById("Balls").value = ball;
+   // document.getElementById("Label1").innerText = ball;
+
 }
     
     
 function testFill()
 {
+    document.getElementById("ServerDiv").style.visibility = "hidden";
     q[0]=+randomNumber(10,100);
     ta[0]=DecToBinInt(q[0]);
     q[1]=+randomNumber(30,200);
@@ -87,12 +140,27 @@ function testFill()
     ta[6]=DecToAnyInt(q[6],7);
     ta[7]=+randomNumber(10,200);    
     q[7]=DecToAnyInt(ta[7],5);    
-    
+    q[8] = +randomNumber(1, 10) * 1024;
+    ta[8] = q[8]/1024;
+    q[9] = +randomNumber(1, 10);
+    ta[9] = q[9] * 1024
+    ta[10] = +randomNumber(1000, 2000);
+    q[10] = DecToRoman(ta[10]);
+    q[11] = +randomNumber(1000, 2000);
+    ta[11] = DecToRoman(q[11]);
+    //alert(q[12]);
     for(var i=0;i<n;i++)
-      document.getElementById("task"+(i+1)).innerHTML=q[i];
+        document.getElementById("task" + (i + 1)).innerHTML = q[i];
+    //document.getElementById("btnSend").visibility = "hidden";
 }
     
+    function BytesToKBytes(b) {
+        return b / 1024
+    }
 
+    function КBytesToBytes(b) {
+        return b * 1024
+    }
     
 function DecToMachineBin(n,digits)
 {
@@ -141,11 +209,40 @@ function DecToBinInt(a)
 	  n = parseInt(n);
 	  return Math.floor( Math.random() * (n - m + 1) ) + m;
 	}
-	
-</script>
-	
 
-<div></div>
+    function DecToRoman(number) {
+  let roman = {
+    "M": 1000,
+    "CM": 900,
+    "D": 500,
+    "CD": 400,
+    "C": 100,
+    "XC": 90,
+    "L": 50,
+    "XL": 40,
+    "X": 10,
+    "IX": 9,
+    "V": 5,
+    "IV": 4,
+    "I": 1
+  };
+  let result = "";
+
+  for (var i of Object.keys(roman)) {
+    var repeat = Math.floor(number / roman[i]);
+    number -= repeat * roman[i];
+    result += i.repeat(repeat);
+  }
+
+  return result;
+    }
+
+</script>
+    <div id="ServerDiv">
+    <form id="form1" runat="server">
+        <asp:Button ID="btnSend"  runat="server" Text="Отправить результаты учителю" Width="204px" OnClick="Button1_Click" UseSubmitBehavior="False"  />
+        <br />
     </form>
+        </div>
 </body>
 </html>
