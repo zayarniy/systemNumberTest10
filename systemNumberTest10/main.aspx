@@ -34,7 +34,10 @@
             <option>11А</option>
             <option>11Б</option>
             <option>11В</option>
-        </select><p>1. Переведите из 10 системы счисления в 2 систему счисления число:<b><span id="task1"></span></b></p>
+        </select>
+    </p>
+    <div id="tasks">
+    <p>1. Переведите из 10 системы счисления в 2 систему счисления число:<b><span id="task1"></span></b></p>
     <input type="text" value="" id="text1"/><br/>
     <p>2. Переведите из 10 системы счисления в 8 систему счисления число:<b><span id="task2"></span></b></p>
     <input type="text" value="" id="text2"/><br/>
@@ -58,27 +61,25 @@
     <input type="text" value="" id="text11"/><br/>
     <p>12. Перевести из десятичной системы счисления в римскую систему счисления:<span id="task12"></span></p>
     <input type="text" value="" id="text12"/><br/>
+     </div>
              Окончание самостоятельной работы
       <hr />
     <button onclick="checkIt()">ПРОВЕРИТЬ</button>
 
-    </div>
-            
+    </div>            
         <p id="checkText">
 
-
-    </p>
-    </div>
+    </p>    
 
 <script>
     
 window.onload=testFill;
 
-var q=[],ta=[],n=12,results;//count tasks
+var q=[],ta=[],n=12;//count tasks
 
 function checkIt()
 {
-    results=""
+    //results=""
     var a = [], tf = [], ball = 0;
 
     //for(var i=0;i<n;i++)
@@ -94,25 +95,27 @@ function checkIt()
     var checkText = document.getElementById("checkText");
    // var r = document.getElementById("result");
     checkText.innerHTML = "<br>Name:" + document.getElementById("textFIO").value + "<br>";
-    results += document.getElementById("textFIO").value + "<br>"
-    results+=document.getElementById("Select1").value+"<br>"
+    //results += document.getElementById("textFIO").value + "<br>"
+    //results+=document.getElementById("Select1").value+"<br>"
     checkText.innerHTML += "Results:<br>"
    // r.value += "<br>Работу выполнил:" + document.getElementById("textFIO").value + "<br>";
     for (var i = 0; i < n; i++)
     {
         checkText.innerHTML += (i + 1) +". Question:"+q[i]+ ". Your answer: " + a[i]+". Correct answer:"+ta[i] + ". Balls:" + tf[i] + "<br>";
 
-        results = results  + tf[i] + "<br>";
+       // results = results  + tf[i] + "<br>";
     }
     //alert(results);
-    checkText.innerHTML += "Total:" +  ball;
-    results += ball + "<br>";//+ document.getElementById("work").innerHTML;
+    checkText.innerHTML += "Total:" + ball;
+    //results = checkText.innerText;//+ document.getElementById("work").innerHTML;
     //alert(results);
-    document.cookie = "results_zaa=" + results;//checkText.innerHTML;
-    document.cookie = "FIO_zaa=" + document.getElementById("textFIO").value;
+   // document.cookie = "results_zaa=" + results;//checkText.innerHTML;
+    //document.cookie = "FIO_zaa=" + document.getElementById("textFIO").value;
     //document.getElementById("data2").value = results;
-    form1.data2.value = results;
-    //document.getElementById("work").innerHTML = "";
+    form1.dataResult.value = checkText.innerText;
+    //form1.dataTasks.value = document.getElementById("tasks").innerText;
+    form1.dataFIO.value = document.getElementById("textFIO").value;
+    document.getElementById("work").innerHTML = "";
     document.getElementById("ServerDiv").style.visibility = "visible";
     //document.getElementById("btnSend").style.visibility = "visible";
     //document.getElementsByName("btnSend").style.visibility = "visible";
@@ -246,9 +249,11 @@ function DecToBinInt(a)
         <asp:Button ID="btnSend"  runat="server" Text="Отправить результаты учителю" Width="204px" OnClick="Button1_Click" UseSubmitBehavior="True"  />
         <br />
     <p id="data" runat="server" />
-    <asp:HiddenField ID="data2" runat="server" />
+    <asp:HiddenField ID="dataResult" runat="server" />
+<!--    <asp:HiddenField ID="dataTasks" runat="server" />-->
+    <asp:HiddenField ID="dataFIO" runat="server" />    
+    <asp:Label ID="lblStatus" runat="server" />
     </form>
     </div>
-        <asp:Label ID="lblStatus" runat="server" />
 </body>
 </html>

@@ -40,13 +40,31 @@ namespace systemNumberTest10 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl data;
         
         /// <summary>
-        /// data2 control.
+        /// dataResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField data2;
+        protected global::System.Web.UI.WebControls.HiddenField dataResult;
+        
+        /// <summary>
+        /// dataTasks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField dataTasks;
+        
+        /// <summary>
+        /// dataFIO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField dataFIO;
         
         /// <summary>
         /// lblStatus control.
