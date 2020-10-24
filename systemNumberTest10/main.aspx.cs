@@ -9,15 +9,34 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MyDatabase;
 
 namespace systemNumberTest10
 {
     public partial class main : System.Web.UI.Page
     {
+        //string path = HttpRuntime.AppDomainAppPath;
+        string filename = HttpRuntime.AppDomainAppPath + "\\results.csv";
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    string[] strs = File.ReadAllLines(filename);
+                    int count = strs.Length/2; //Если дублируем инфу в двух кодировках
+                    string str = strs.LastOrDefault();
+                    var res = str.Split(';');
+                    lblStatus.Text = "Count:" + count+" Last:"+res[0];
+                        
+                }
+            }
+            catch
+            {
+                
+            }
         }
 
         //Get HTML
@@ -45,14 +64,13 @@ namespace systemNumberTest10
         protected void Button1_Click(object sender, EventArgs e)
         {
             //ScriptManager.RegisterStartupScript(this, GetType(), "AnyValue", "checkIt()", false);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showalert2", "alert('"+data2.Value+"');", true);
 
             Encoding utf8 = Encoding.GetEncoding("UTF-8");
-            Encoding win1251 = Encoding.GetEncoding("Windows-1251");
-
-            string filename = HttpRuntime.AppDomainAppPath+"\\results.csv";
-
+            Encoding win1251 = Encoding.GetEncoding("Windows-1251");            
             HttpCookie cookieRes = Request.Cookies["results_zaa"];
             HttpCookie cookieFIO = Request.Cookies["FIO_zaa"];
+           
             if (cookieFIO.Value == "")
             {
                 //lblStatus.Text = "Имя не задано! Результаты не отправлены";
@@ -67,13 +85,17 @@ namespace systemNumberTest10
                 try
                 {
                     DateTime time = DateTime.Now;
-
-                    string str= time.Year + "/" + time.Month + "/" + time.Day + " " + time.Hour + ":" + time.Minute + ":" + time.Second + ";" + cookieRes.Value.Replace("<br>", ";") + "\r\n";
+                    string str= time.Year + "/" + time.Month.ToString("D2") + "/" + time.Day.ToString("D2") + " " + time.Hour.ToString("D2") + ":" + time.Minute.ToString("D2") + ":" + time.Second.ToString("D2") + ";" + cookieRes.Value.Replace("<br>", ";") + "\r\n";
                     byte[] utf8Bytes = win1251.GetBytes(str);
                     byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
                     //Console.WriteLine(win1251.GetString(win1251Bytes));
                     string str2 = win1251.GetString(win1251Bytes);
+                    File.AppendAllText(filename, str);// Encoding.GetEncoding("UTF-8"));
                     File.AppendAllText(filename, str2);// Encoding.GetEncoding("UTF-8"));
+                    MyDatabase.Database database = new Database();
+                    database.InitializeDB();                   
+                    database.InsertData(str2, "");
+
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Данные сохранены');", true);
                 }
                 catch

@@ -63,7 +63,8 @@
     <button onclick="checkIt()">ПРОВЕРИТЬ</button>
 
     </div>
-    <p id="checkText">
+            
+        <p id="checkText">
 
 
     </p>
@@ -109,7 +110,9 @@ function checkIt()
     //alert(results);
     document.cookie = "results_zaa=" + results;//checkText.innerHTML;
     document.cookie = "FIO_zaa=" + document.getElementById("textFIO").value;
-    document.getElementById("work").innerHTML = "";
+    //document.getElementById("data2").value = results;
+    form1.data2.value = results;
+    //document.getElementById("work").innerHTML = "";
     document.getElementById("ServerDiv").style.visibility = "visible";
     //document.getElementById("btnSend").style.visibility = "visible";
     //document.getElementsByName("btnSend").style.visibility = "visible";
@@ -240,9 +243,12 @@ function DecToBinInt(a)
 </script>
     <div id="ServerDiv">
     <form id="form1" runat="server">
-        <asp:Button ID="btnSend"  runat="server" Text="Отправить результаты учителю" Width="204px" OnClick="Button1_Click" UseSubmitBehavior="False"  />
+        <asp:Button ID="btnSend"  runat="server" Text="Отправить результаты учителю" Width="204px" OnClick="Button1_Click" UseSubmitBehavior="True"  />
         <br />
+    <p id="data" runat="server" />
+    <asp:HiddenField ID="data2" runat="server" />
     </form>
-        </div>
+    </div>
+        <asp:Label ID="lblStatus" runat="server" />
 </body>
 </html>

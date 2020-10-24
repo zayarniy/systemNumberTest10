@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "systemNumberTest10", "systemNumberTest10\systemNumberTest10.csproj", "{9421B57B-7B93-4374-97E9-5B0169856CD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDataBaseEditor", "SQLDataBaseEditor\SQLDataBaseEditor.csproj", "{F8E17A46-743E-46C2-9C03-D839C085B9A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDatabase", "MyDatabase\MyDatabase.csproj", "{B872C9A9-EA63-4D7B-8ACF-7E10B8F5D5F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9421B57B-7B93-4374-97E9-5B0169856CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9421B57B-7B93-4374-97E9-5B0169856CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9421B57B-7B93-4374-97E9-5B0169856CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E17A46-743E-46C2-9C03-D839C085B9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E17A46-743E-46C2-9C03-D839C085B9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E17A46-743E-46C2-9C03-D839C085B9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E17A46-743E-46C2-9C03-D839C085B9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B872C9A9-EA63-4D7B-8ACF-7E10B8F5D5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B872C9A9-EA63-4D7B-8ACF-7E10B8F5D5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B872C9A9-EA63-4D7B-8ACF-7E10B8F5D5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B872C9A9-EA63-4D7B-8ACF-7E10B8F5D5F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
