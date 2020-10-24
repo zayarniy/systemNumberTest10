@@ -70,7 +70,7 @@
         <p id="checkText">
 
     </p>    
-
+</div>
 <script>
     
 window.onload=testFill;
@@ -253,6 +253,7 @@ function DecToBinInt(a)
 <!--    <asp:HiddenField ID="dataTasks" runat="server" />-->
     <asp:HiddenField ID="dataFIO" runat="server" />    
     <asp:Label ID="lblStatus" runat="server" />
+        <a href="results.aspx">Get results</a>
     </form>
     </div>
 </body>

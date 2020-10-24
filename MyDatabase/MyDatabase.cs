@@ -12,6 +12,11 @@ namespace MyDatabase
         int id;
         string data1;
         string data2;
+
+        public int ID { get => id; }
+        public string Data1 { get => data1; }
+        public string Data2 { get => data2; }
+
         public Data(int id, string data1, string data2)
         {
             this.id = id;
